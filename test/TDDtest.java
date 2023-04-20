@@ -26,4 +26,9 @@ class TDDtest {
 	void testEx4() {
 		assertEquals(Welcome.welcome("amy,bob"), "Hello, Amy, Bob");
 	}
+	
+	@Test
+	void testEx5() {
+		assertEquals(Welcome.welcome("Amy,bob,jerry"), "Hello, Amy, Bob, Jerry");
+	}
 }
