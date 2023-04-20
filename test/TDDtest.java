@@ -17,4 +17,8 @@ class TDDtest {
 		assertEquals(Welcome.welcome("  "),"Hello, my friends");
 		assertEquals(Welcome.welcome(""),"Hello, my friends");
 	}
+	@Test
+	void testEx3() {
+		assertEquals(Welcome.welcome("JERRY"), "HELLO, JERRY !");
+	}
 }
