@@ -31,4 +31,9 @@ class TDDtest {
 	void testEx5() {
 		assertEquals(Welcome.welcome("Amy,bob,jerry"), "Hello, Amy, Bob, Jerry");
 	}
+	
+	@Test
+	void testEx6() {
+		assertEquals(Welcome.welcome("Amy, BOB, Jerry"), "Hello, Amy, Jerry. AND HELLO, BOB !");
+	}
 }
