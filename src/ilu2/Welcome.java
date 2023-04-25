@@ -1,16 +1,16 @@
 package ilu2;
 
-import java.io.Console;
-import java.util.Stack;
 
 public class Welcome {
-
+	private static int positionMaj=0;
+	private static int positionMin=0;
 	public static String welcome(String input) {	
 	StringBuilder affiche = new StringBuilder();
 	String[][] listerange = splitListCarac(input);
 
 	String[] nomMaj = listerange[1]; // l'indice 1 correspond à la liste des mots en lettre CAPITAL 
 	String[] nomMin = listerange[0]; // l'indice 0 correspond à la liste des mots soit tout en mininuscule ou avec seulement une MAJ
+	
 	
 	if (input.trim()=="") {
 		return printVide(affiche).toString();
@@ -26,7 +26,7 @@ public class Welcome {
 	
 	
 	public static StringBuilder printVide(StringBuilder affiche) {
-		affiche.append("Hello, my friends");
+		affiche.append("Hello, my friend");
 		return affiche;
 	}
 	
@@ -35,8 +35,12 @@ public class Welcome {
 		for (int i=0; i< nomMin.length && nomMin[i]!=null; i++) {
 			String firstcarc = nomMin[i].substring(0,1); 
 			String restcarac = nomMin[i].substring(1); 
+			if (i==positionMin-1 && i!=0) {
+				affiche.append(" and "+firstcarc.toUpperCase()+restcarac);
+				break;
+			}
 			affiche.append(", "+firstcarc.toUpperCase()+restcarac);
-		}
+		} 
 	}
 	
 	public static void printMajuscule(StringBuilder affiche, String[] nomMin, String[] nomMaj) {
@@ -47,6 +51,10 @@ public class Welcome {
 			affiche.append(". AND HELLO");			
 		}
 		for (int i=0; i< nomMaj.length && nomMaj[i]!=null; i++) {
+			if (i==positionMaj-1 && i!=0) {
+				affiche.append(" AND "+nomMaj[i]);
+				break;
+			}
 			affiche.append(", "+nomMaj[i]);
 		}
 		affiche.append(" !");
@@ -55,8 +63,8 @@ public class Welcome {
 	public static String[][] splitListCarac(String input) {
 		String[] listemots = input.split(",");
 		String[][] listerange = new String[2][listemots.length];
-		int positionMaj=0;
-		int positionMin=0;
+		positionMaj=0;
+		positionMin=0;
 		
 		for (int i = 0; i < listemots.length; i++) {  /* Split input en 2*/
 			if (listemots[i].toUpperCase().equals(listemots[i])) {
@@ -67,12 +75,15 @@ public class Welcome {
 				listerange[0][positionMin]=listemots[i].trim();
 				positionMin++;
 			}
+			
 		}
 		return listerange;
 	}
+
 	
 	public static void main(String[] args) {
-		System.out.println(Welcome.welcome("Amy, BOB, Jerry"));
+		System.out.println(Welcome.welcome("bob, AMY, jerry, jack"));
+		System.out.println(Welcome.welcome("bob, AMY, jerry, JACK"));
 //		System.out.println(java.util.Arrays.deepToString(splitListCarac("Amy, BOB, Jerry")));
 
 	}
