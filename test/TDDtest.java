@@ -24,19 +24,16 @@ class TDDtest {
 	
 	@Test
 	void testEx4() {
-//		assertEquals(Welcome.welcome("amy,bob"), "Hello, Amy, Bob");
 		assertEquals(Welcome.welcome("amy,bob"), "Hello, Amy and Bob");
 	}
 	
 	@Test
 	void testEx5() {
-//		assertEquals(Welcome.welcome("Amy,bob,jerry"), "Hello, Amy, Bob, Jerry");
 		assertEquals(Welcome.welcome("Amy,bob,jerry"), "Hello, Amy, Bob and Jerry");
 	}
 	
 	@Test
 	void testEx6() {
-//		assertEquals(Welcome.welcome("Amy, BOB, Jerry"), "Hello, Amy, Jerry. AND HELLO, BOB !");
 		assertEquals(Welcome.welcome("Amy, BOB, Jerry"), "Hello, Amy and Jerry. AND HELLO, BOB !");
 	}
 	
@@ -49,12 +46,15 @@ class TDDtest {
 	@Test
 	void testEx8() {
 		assertEquals(Welcome.welcome("bob   , amy  "), "Hello, Bob and Amy");
+		assertEquals(Welcome.welcome("BOB   , AMY  "), "HELLO, BOB AND AMY !");
 	}
 	
 	@Test
 	void testEx9() {
 		assertEquals(Welcome.welcome("bob, JERRY, amy, bob, JERRY, bob"), 
 				"Hello, Bob (x3) and Amy. AND HELLO, JERRY (x2) !");
+		assertEquals(Welcome.welcome("bob, bob, amy, bob, JERRY, amy "),
+				"Hello, Bob (x3) and Amy (x2). AND HELLO, JERRY !"); 
 	}
 	
 }
